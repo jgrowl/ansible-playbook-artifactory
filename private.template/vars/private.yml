@@ -1,0 +1,15 @@
+artifactory_port: 8080
+artifactory_webserver: False
+
+nginx_vhost_template: ../../../.private/templates/root/etc/nginx/sites-available/site.j2
+nginx_ip: '*'
+nginx_port: 80
+nginx_site: artifactory
+nginx_default_server: True
+nginx_server_name: artifactory.example.com
+nginx_root: False
+
+nginx_ssl: False 
+nginx_ssl_certificate: /etc/ssl/certs/example_com.crt
+nginx_ssl_certificate_key: /etc/ssl/private/example_com.key
+

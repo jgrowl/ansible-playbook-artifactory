@@ -1,0 +1,13 @@
+---
+
+# Configure Jenkins repository
+
+- name: Add jenkins apt-key
+  apt_key: url=${jenkins_key} state=present
+  tags:
+    - jenkins
+
+- name: Configure apt repository manually to get around missing source repository problem
+  template: src=root/etc/apt/sources.list.d/jenkins.list.j2 dest=/etc/apt/sources.list.d/jenkins.list owner=root group=root mode=0755
+  tags: 
+    - jenkins

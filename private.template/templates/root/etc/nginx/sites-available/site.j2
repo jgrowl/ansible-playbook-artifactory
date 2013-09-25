@@ -1,0 +1,32 @@
+upstream {{nginx_site}} {
+    server 127.0.0.1:{{artifactory_port}} fail_timeout=0;
+}
+
+server {
+  listen {{nginx_ip}}:{{nginx_port}}{% if nginx_default_server %} default_server{% endif %};
+  server_name {{nginx_server_name}};
+
+{% if nginx_secure == True %}
+  ssl on;
+  ssl_certificate {{nginx_ssl_certificate}};
+  ssl_certificate_key {{nginx_ssl_certificate_key}};
+  ssl_protocols  SSLv3 TLSv1;
+  ssl_ciphers AES:HIGH:!ADH:!MD5;
+  ssl_prefer_server_ciphers   on;  
+{% endif %}
+
+  # individual nginx logs for vhost
+  access_log  /var/log/nginx/{{nginx_site}}_access.log;
+  error_log   /var/log/nginx/{{nginx_site}}_error.log;
+
+  location / {
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header Host $http_host;
+      proxy_redirect off;
+
+      if (!-f $request_filename) {
+          proxy_pass http://{{nginx_site}};
+          break;
+      }
+  }
+}

@@ -1,0 +1,8 @@
+[submodule "roles/java"]
+	path = roles/java
+	url = https://github.com/jgrowl/ansible-playbook-java.git
+	branch = master
+[submodule "roles/nginx"]
+	path = roles/nginx
+	url = https://github.com/jgrowl/ansible-playbook-nginx.git
+	branch = master

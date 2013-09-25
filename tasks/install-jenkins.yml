@@ -1,0 +1,6 @@
+---
+
+- name: Install Jenkins
+  apt: pkg=jenkins state=latest
+  tags:
+    - artifactory

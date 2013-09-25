@@ -1,0 +1,20 @@
+---
+# This Playbook deploys artifactory!
+
+- hosts: artifactory
+  vars_files:
+    - vars/main.yml
+    - vars/private.yml
+  user: $global_user
+  sudo: $global_use_sudo
+  roles:
+    - java
+    - {role: nginx/roles/ssl-certs, when: nginx_ssl}
+    - {role: nginx, when: artifactory_webserver == 'nginx'}
+  tasks:
+    - include: tasks/main.yml
+#  - include: tasks/install-dependencies.yml
+#  - include: tasks/install-jenkins.yml
+
+  handlers:
+   - include: handlers/main.yml

@@ -1,0 +1,8 @@
+---
+- name: artifactory | Download artifactory zip
+  get_url: url=$artifactory_zip_url dest=$artifactory_zip_dir mode=0640
+
+- name: artifactory | Extract artifactory
+  command: unzip $artifactory_zip_dir -d $artifactory_dir creates=$artifactory_dir
+
+#- name: artifactory | Install

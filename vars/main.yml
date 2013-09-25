@@ -1,0 +1,10 @@
+global_user: root 
+global_use_sudo: False
+global_update_apt_cache: True
+
+artifactory_webserver: False
+artifactory_dir: /srv/artifactory
+artifactory_zip_dir: $artifactory_dir/.zip
+artifactory_zip_file: artifactory-3.0.3.zip
+artifactory_zip_file_path: $artifactory_zip_dir/$artifactory_zip_file
+artifactory_zip_url: http://dl.bintray.com/content/jfrog/artifactory/$artifactory_zip_file
