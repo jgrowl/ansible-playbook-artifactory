@@ -1,4 +1,7 @@
 ---
+- name: artifactory | Ensure download directory exists
+  file: path=$artifactory_zip_dir state=directory
+
 - name: artifactory | Download artifactory zip
   get_url: url=$artifactory_zip_url dest=$artifactory_zip_dir mode=0640
 
