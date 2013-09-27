@@ -1,4 +1,10 @@
 ---
+- name: artifactory | Install dependencies
+  apt: pkg=$item state=installed
+  with_items:
+    - unzip
+  tags: artifactory 
+
 - name: artifactory | Ensure there is a done directory
   file: path=$artifactory_done_dir state=directory owner=root group=root
   tags: artifactory
