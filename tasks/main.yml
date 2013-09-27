@@ -18,5 +18,9 @@
 - name: artifactory | Extract artifactory
   shell: unzip $artifactory_zip_file_path -d $artifactory_dir creates=$artifactory_version_dir
 
+- name: artifactory | Set artifactory config 
+  template: src=root/etc/opt/jfrog/artifactory.j2 dest=/etc/opt/jfrog/artifactory
+
 - name: artifactory | Install service 
   shell: $artifactory_version_dir/bin/installService.sh && touch $artifactory_done_dir/install-service creates=$artifactory_done_dir/install-service
+

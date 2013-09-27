@@ -11,6 +11,11 @@ artifactory_zip_file: $artifactory_zip_file_name.zip
 artifactory_zip_file_path: $artifactory_zip_dir/$artifactory_zip_file
 artifactory_zip_url: http://dl.bintray.com/content/jfrog/artifactory/$artifactory_zip_file
 
+artifactory_home: $artifactory_version_dir
+artifactory_user: artifactory
+artifactory_java_home: /usr/lib/jvm/java-7-openjdk-amd64
+artifactory_tomcat_home: $artifactory_home/tomcat
+
 # Warning - Be careful changing the settings below:
 #
 # This is used to store files that indicate that an operation has been run. Note that if you change this after you have
