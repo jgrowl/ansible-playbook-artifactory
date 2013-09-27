@@ -1,5 +1,10 @@
 cd /etc/ansible/playbooks/ansible-playbook-artifactory
-sudo -u jenkins /etc/ansible/playbooks/ansible-playbook-artifactory/scripts/add-github-remote
+sudo -u jenkins /etc/ansible/playbooks/ansible-playbook-artifactory/.private/scripts/add-github-remote
+sudo -u jenkins git submodule update --remote
+sudo -u jenkins git submodule update
+sudo -u jenkins git submodule foreach git pull origin master
+sudo -u jenkins git add .
 sudo -u jenkins git pull --no-edit github master
+sudo -u jenkins git commit -m 'Updated submodules'
 sudo -u jenkins git push origin master
 ansible-playbook -i /etc/ansible/inventories/development /etc/ansible/playbooks/ansible-playbook-artifactory/main.yml
