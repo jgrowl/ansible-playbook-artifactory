@@ -5,9 +5,9 @@
     - unzip
   tags: artifactory 
 
-- name: artifactory | Ensure there is a done directory
-  file: path=$artifactory_done_dir state=directory owner=root group=root
-  tags: artifactory
+#- name: artifactory | Ensure there is a done directory
+#  file: path=$artifactory_done_dir state=directory owner=root group=root
+#  tags: artifactory
 
 - name: artifactory | Ensure download directory exists
   file: path=$artifactory_zip_dir state=directory
@@ -16,6 +16,6 @@
   get_url: url=$artifactory_zip_url dest=$artifactory_zip_dir mode=0640
 
 - name: artifactory | Extract artifactory
-  shell: unzip -jo $artifactory_zip_file_path -d $artifactory_dir && touch $artifactory_done_dir/unzip creates=$artifactory_done_dir/unzip
+  shell: unzip $artifactory_zip_file_path -d $artifactory_dir creates=$artifactory_version_dir
 
 #- name: artifactory | Install
