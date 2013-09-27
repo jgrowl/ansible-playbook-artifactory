@@ -21,6 +21,8 @@
 - name: artifactory | Set artifactory config 
   template: src=root/etc/opt/jfrog/artifactory.j2 dest=/etc/opt/jfrog/artifactory
 
-- name: artifactory | Install service 
+- name: artifactory | Install artifactory service 
   shell: $artifactory_version_dir/bin/installService.sh && touch $artifactory_done_dir/install-service creates=$artifactory_done_dir/install-service
 
+- name: artifactory | Start/Restart artifactory
+  service: name=artifactory state=started
