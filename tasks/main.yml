@@ -5,9 +5,9 @@
     - unzip
   tags: artifactory 
 
-#- name: artifactory | Ensure there is a done directory
-#  file: path=$artifactory_done_dir state=directory owner=root group=root
-#  tags: artifactory
+- name: artifactory | Ensure there is a done directory
+  file: path=$artifactory_done_dir state=directory owner=root group=root
+  tags: artifactory
 
 - name: artifactory | Ensure download directory exists
   file: path=$artifactory_zip_dir state=directory
@@ -18,4 +18,5 @@
 - name: artifactory | Extract artifactory
   shell: unzip $artifactory_zip_file_path -d $artifactory_dir creates=$artifactory_version_dir
 
-#- name: artifactory | Install
+- name: artifactory | Install service 
+  shell: $artifactory_version_dir/bin/installService.sh && touch $artifactory_done_dir/install-service creates=$artifactory_done_dir/install-service
