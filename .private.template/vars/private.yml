@@ -1,4 +1,4 @@
-artifactory_port: 8080
+#artifactory_port: 8081
 artifactory_webserver: False
 
 nginx_vhost_template: ../../../.private/templates/root/etc/nginx/sites-available/site.j2

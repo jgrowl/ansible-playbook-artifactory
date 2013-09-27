@@ -2,6 +2,7 @@ global_user: root
 global_use_sudo: False
 global_update_apt_cache: True
 
+artifactory_port: 8081
 artifactory_webserver: False
 artifactory_dir: /srv/artifactory
 artifactory_zip_dir: $artifactory_dir/zip
