@@ -16,6 +16,6 @@
   get_url: url=$artifactory_zip_url dest=$artifactory_zip_dir mode=0640
 
 - name: artifactory | Extract artifactory
-  shell: unzip -j $artifactory_zip_file_path -d $artifactory_dir && touch $artifactory_done_dir/unzip creates=$artifactory_done_dir/unzip
+  shell: unzip -jo $artifactory_zip_file_path -d $artifactory_dir && touch $artifactory_done_dir/unzip creates=$artifactory_done_dir/unzip
 
 #- name: artifactory | Install
